@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import CVRandika from "../assets/CVRandika.pdf";
+import CVJunjun from "../assets/CVJunjun.pdf";
 import { supabase } from "../supabase"; // sesuaikan path
 
 // Memoized Components
@@ -57,7 +57,7 @@ const ProfileImage = memo(() => (
           <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-transparent to-blue-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
 
           <img
-            src="/Randika.jpeg"
+            src="/JunNew.jpeg"
             alt="Profile"
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
             loading="lazy"
@@ -147,10 +147,14 @@ const AboutPage = () => {
   // Fetch total dari Supabase
   useEffect(() => {
     const fetchCounts = async () => {
-      const [{ count: projectCount }, { count: certCount }] = await Promise.all([
-        supabase.from("projects").select("*", { count: "exact", head: true }),
-        supabase.from("certificates").select("*", { count: "exact", head: true }),
-      ]);
+      const [{ count: projectCount }, { count: certCount }] = await Promise.all(
+        [
+          supabase.from("projects").select("*", { count: "exact", head: true }),
+          supabase
+            .from("certificates")
+            .select("*", { count: "exact", head: true }),
+        ],
+      );
       setTotalProjects(projectCount || 0);
       setTotalCertificates(certCount || 0);
     };
@@ -231,7 +235,7 @@ const AboutPage = () => {
                 data-aos-duration="1300"
                 itemProp="name"
               >
-                Muhammad Randika Saputra
+                Junjun Abdinurahman
               </span>
             </h2>
 
@@ -240,13 +244,13 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-              I am an Informatics Engineering student focused on creating
-              exceptional digital experiences. As a passionate content creator
-              and fullstack developer, I specialize in building modern web
-              applications using Laravel, React, and other cutting-edge
-              technologies. I believe in leveraging AI as a professional tool,
-              not a replacement, to deliver innovative solutions that make a
-              difference.
+              I am a fresh graduate in majoring Islamic Economics at the Faculty
+              of Islamic Economics and Business, UIN Prof. K.H. Saifuddin Zuhri,
+              with a strong academic interest in economic development, public
+              finance, and inclusive growth. My academic journey has shaped my
+              ability to think analytically, work with quantitative and
+              qualitative data, and understand economic issues from both
+              conventional and Islamic perspectives.
             </p>
 
             {/* Quote Section */}
@@ -259,7 +263,12 @@ const AboutPage = () => {
               <div className="absolute -bottom-4 -left-2 w-12 h-12 bg-gradient-to-r from-[#a855f7]/20 to-[#6366f1]/20 rounded-full blur-lg"></div>
 
               <div className="absolute top-3 left-4 text-[#6366f1] opacity-30">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
                 </svg>
               </div>
@@ -270,7 +279,11 @@ const AboutPage = () => {
             </div>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full mt-6">
-              <a href={CVRandika} download="CVRandika.pdf" className="w-full lg:w-auto">
+              <a
+                href={CVJunjun}
+                download="CVJunjun.pdf"
+                className="w-full lg:w-auto"
+              >
                 <button
                   data-aos="fade-up"
                   data-aos-duration="800"
@@ -306,15 +319,28 @@ const AboutPage = () => {
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
         }
         @keyframes spin-slower {
-          to { transform: rotate(360deg); }
+          to {
+            transform: rotate(360deg);
+          }
         }
-        .animate-bounce-slow { animation: bounce 3s infinite; }
-        .animate-pulse-slow { animation: pulse 3s infinite; }
-        .animate-spin-slower { animation: spin-slower 8s linear infinite; }
+        .animate-bounce-slow {
+          animation: bounce 3s infinite;
+        }
+        .animate-pulse-slow {
+          animation: pulse 3s infinite;
+        }
+        .animate-spin-slower {
+          animation: spin-slower 8s linear infinite;
+        }
       `}</style>
     </div>
   );

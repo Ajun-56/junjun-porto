@@ -20,6 +20,16 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
     }
   };
 
+  // Validasi data sebelum digunakan
+  const safeTitle = Title || "Untitled Project";
+  const safeDescription = Description || "No description available";
+  const safeId = id || null;
+  const safeImage = Img || '/placeholder-image.jpg';
+  const safeProjectLink = ProjectLink || null;
+
+  // Buat slug hanya jika Title tersedia
+  const projectSlug = safeTitle ? toSlug(safeTitle) : '';
+
   return (
     <div className="group relative w-full h-full">
       <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-lg border border-white/10 shadow-2xl transition-all duration-300 hover:shadow-purple-500/20 h-full flex flex-col">
@@ -29,8 +39,8 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
           {/* Container gambar dengan ukuran tetap */}
           <div className="relative overflow-hidden rounded-lg w-full" style={{ paddingBottom: '56.25%' }}> {/* 16:9 aspect ratio */}
             <img
-              src={Img}
-              alt={Title}
+              src={safeImage}
+              alt={safeTitle}
               className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               onError={(e) => {
                 e.target.src = '/placeholder-image.jpg'; // Gambar placeholder jika error
@@ -41,18 +51,18 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
           {/* Konten dengan flex-grow untuk mengisi ruang yang tersisa */}
           <div className="mt-4 space-y-3 flex flex-col flex-1">
             <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent line-clamp-2 min-h-[3.5rem]">
-              {Title}
+              {safeTitle}
             </h3>
 
             <p className="text-gray-300/80 text-sm leading-relaxed line-clamp-3 flex-1">
-              {Description}
+              {safeDescription}
             </p>
 
             {/* Footer selalu di bawah */}
             <div className="pt-4 flex items-center justify-between border-t border-white/10 mt-auto">
-              {ProjectLink ? (
+              {safeProjectLink ? (
                 <a
-                  href={ProjectLink || "#"}
+                  href={safeProjectLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleLiveDemo}
@@ -62,14 +72,14 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
                   <ExternalLink className="w-4 h-4" />
                 </a>
               ) : (
-                <span className="text-gray-500 text-sm">
-                  Demo Not Available
+                <span className="text-gray-500 text-sm italic">
+                  Demo not available
                 </span>
               )}
 
-              {id ? (
+              {safeId ? (
                 <Link
-                  to={`/project/${toSlug(Title)}`}
+                  to={`/project/${projectSlug}`}
                   onClick={handleDetails}
                   className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/90 transition-all duration-200 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
                 >
@@ -77,8 +87,8 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               ) : (
-                <span className="text-gray-500 text-sm">
-                  Details Not Available
+                <span className="text-gray-500 text-sm italic">
+                  Details not available
                 </span>
               )}
             </div>

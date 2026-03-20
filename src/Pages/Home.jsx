@@ -88,8 +88,8 @@ const SocialLink = memo(({ icon: Icon, link, label }) => (
 const TYPING_SPEED = 100;
 const ERASING_SPEED = 50;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Network & Telecom Student", "Tech Enthusiast"];
-const TECH_STACK = ["React", "Javascript", "Laravel", "PHP", "Tailwind"];
+const WORDS = ["Finance", "Marketing Enthusiast"];
+// const TECH_STACK = ["React", "Javascript", "Laravel", "PHP", "Tailwind"];
 const SOCIAL_LINKS = [
   {
     icon: Github,
@@ -164,20 +164,20 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Muhammad Randika Saputra — Fullstack Developer</title>
+        <title>Junjun Abdi Nurahman</title>
         <meta
           name="description"
-          content="Website resmi Muhammad Randika Saputra, Front-End Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan."
+          content="Website resmi Junjun Abdi Nurahman, Front-End Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://ekizr.com" />
         <meta
           property="og:title"
-          content="Muhammad Randika Saputra — Frontend Web Developer"
+          content="Junjun Abdi Nurahman — Frontend Web Developer"
         />
         <meta
           property="og:description"
-          content="Website resmi dan portofolio Muhammad Randika Saputra, Front-End Web Developer."
+          content="Website resmi dan portofolio Junjun Abdi Nurahman, Front-End Web Developer."
         />
         <meta property="og:url" content="https://ekizr.com" />
         <meta property="og:type" content="website" />
@@ -185,7 +185,7 @@ const Home = () => {
           {
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Muhammad Randika Saputra",
+            "name": "Junjun Abdi Nurahman",
             "jobTitle": "Frontend Developer",
             "url": "https://ekizr.com",
             "sameAs": [
@@ -244,9 +244,6 @@ const Home = () => {
                     data-aos="fade-up"
                     data-aos-delay="1200"
                   >
-                    {TECH_STACK.map((tech, index) => (
-                      <TechStack key={index} tech={tech} />
-                    ))}
                   </div>
 
                   {/* CTA Buttons */}
@@ -276,48 +273,70 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Right Column - WebM Video */}
+              {/* Right Column - Image */}
               <div
-                className="w-full py-0 md:py-[10%] sm:py-0 lg:w-1/2 h-[260px] sm:h-[400px] lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2  mt-5 sm:mt-0"
+                className="w-full py-0 md:py-[10%] sm:py-0 lg:w-1/2 h-[260px] sm:h-[400px] lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-5 sm:mt-0"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
                 data-aos="fade-left"
                 data-aos-delay="600"
               >
-                <div className="relative w-full opacity-90">
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {/* Background glow effect */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/10 to-[#a855f7]/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${
-                      isHovering
-                        ? "opacity-50 scale-105"
-                        : "opacity-20 scale-100"
-                    }`}
+                    className={`absolute inset-0 bg-gradient-to-r from-[#6366f1]/20 to-[#a855f7]/20 rounded-full blur-3xl transition-all duration-700 ease-in-out ${isHovering ? "opacity-60 scale-110" : "opacity-30 scale-100"
+                      }`}
                   ></div>
 
+                  {/* Image Container */}
                   <div
-                    className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
-                      isHovering ? "scale-105" : "scale-100"
-                    }`}
-                  >
-                    <img
-                      src="Animation1.gif"
-                      alt="Developer Animation"
-                      className={`w-full h-full object-contain transition-all duration-500 ${
-                        isHovering
-                          ? "scale-[95%] sm:scale-[90%] md:scale-[90%] lg:scale-[90%] rotate-2"
-                          : "scale-[90%] sm:scale-[80%] md:scale-[80%] lg:scale-[80%]"
+                    className={`relative z-10 w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] xl:w-[480px] transition-all duration-500 ease-out ${isHovering ? "transform scale-105" : "transform scale-100"
                       }`}
-                    />
+                  >
+                    {/* Decorative border */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-[#6366f1] to-[#a855f7] rounded-2xl opacity-75 blur-sm"></div>
+
+                    {/* Image frame */}
+                    <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#1a1a2e] to-[#16213e] p-1">
+                      <div className="relative aspect-square overflow-hidden rounded-xl">
+                        {/* Your image */}
+                        <img
+                          src="JunjunHero.png"
+                          alt="Junjun Abdi Nurahman"
+                          className={`w-full h-full object-cover transition-all duration-700 ${isHovering ? "scale-110" : "scale-100"
+                            }`}
+                        />
+
+                        {/* Overlay gradient on hover */}
+                        <div
+                          className={`absolute inset-0 bg-gradient-to-t from-[#6366f1]/30 via-transparent to-transparent transition-opacity duration-500 ${isHovering ? "opacity-100" : "opacity-0"
+                            }`}
+                        ></div>
+                      </div>
+                    </div>
+
+                    {/* Floating particles effect */}
+                    <div className="absolute -inset-4 pointer-events-none">
+                      <div
+                        className={`absolute top-0 right-0 w-20 h-20 bg-[#6366f1] rounded-full blur-3xl transition-all duration-700 ${isHovering ? "opacity-40 scale-150" : "opacity-20 scale-100"
+                          }`}
+                      ></div>
+                      <div
+                        className={`absolute bottom-0 left-0 w-20 h-20 bg-[#a855f7] rounded-full blur-3xl transition-all duration-700 ${isHovering ? "opacity-40 scale-150" : "opacity-20 scale-100"
+                          }`}
+                      ></div>
+                    </div>
                   </div>
 
-                  <div
-                    className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
-                      isHovering ? "opacity-50" : "opacity-20"
-                    }`}
-                  >
+                  {/* Animated rings */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
-                        isHovering ? "scale-110" : "scale-100"
-                      }`}
+                      className={`absolute w-[300px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] border border-[#6366f1]/20 rounded-full transition-all duration-1000 ${isHovering ? "scale-110 opacity-40" : "scale-100 opacity-20"
+                        }`}
+                    ></div>
+                    <div
+                      className={`absolute w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[450px] border border-[#a855f7]/20 rounded-full transition-all duration-1000 delay-100 ${isHovering ? "scale-105 opacity-40" : "scale-100 opacity-20"
+                        }`}
                     ></div>
                   </div>
                 </div>

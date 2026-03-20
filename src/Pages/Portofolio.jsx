@@ -222,7 +222,7 @@ export default function FullWidthTabs() {
           </span>
         </h2>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
-          Explore my journey through projects, certifications, and technical expertise. 
+          Explore my journey through projects, certifications, and technical expertise.
           Each section represents a milestone in my continuous learning path.
         </p>
       </div>
@@ -305,11 +305,11 @@ export default function FullWidthTabs() {
               label="Certificates"
               {...a11yProps(1)}
             />
-            <Tab
+            {/* <Tab
               icon={<Boxes className="mb-2 w-5 h-5 transition-all duration-300" />}
               label="Tech Stack"
               {...a11yProps(2)}
-            />
+            /> */}
           </Tabs>
         </AppBar>
 
@@ -366,10 +366,10 @@ export default function FullWidthTabs() {
                     data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
                     data-aos-duration={index % 3 === 0 ? "1000" : index % 3 === 1 ? "1200" : "1000"}
                   >
-                    <Certificate 
-                      ImgSertif={certificate.Img}
-                      Title={certificate.Title}
-                      Description={certificate.Description}
+                    <Certificate
+                      ImgSertif={certificate.img || certificate.Img}  // Coba kedua kemungkinan
+                      Title={certificate.title || certificate.Title}
+                      Description={certificate.description || certificate.Description}
                     />
                   </div>
                 ))}
