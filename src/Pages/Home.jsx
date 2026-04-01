@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, memo } from "react";
 import { Helmet } from "react-helmet-async";
 import {
-  Github,
   Linkedin,
   Mail,
   ExternalLink,
@@ -35,14 +34,14 @@ const MainTitle = memo(() => (
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-          Fullstack
+          Certified MSME
         </span>
       </span>
       <br />
       <span className="relative inline-block mt-2">
         <span className="absolute -inset-2 bg-gradient-to-r from-[#6366f1] to-[#a855f7] blur-2xl opacity-20"></span>
         <span className="relative bg-gradient-to-r from-[#6366f1] to-[#a855f7] bg-clip-text text-transparent">
-          Developer
+          Assistant
         </span>
       </span>
     </h1>
@@ -92,18 +91,13 @@ const WORDS = ["Finance", "Marketing Enthusiast"];
 // const TECH_STACK = ["React", "Javascript", "Laravel", "PHP", "Tailwind"];
 const SOCIAL_LINKS = [
   {
-    icon: Github,
-    link: "https://github.com/randikasptra",
-    label: "GitHub Profile",
-  },
-  {
     icon: Linkedin,
-    link: "https://www.linkedin.com/in/muhammad-randika-saputra-8299a030b?",
+    link: "https://www.linkedin.com/in/junjunabdinurrahman",
     label: "LinkedIn Profile",
   },
   {
     icon: Instagram,
-    link: "https://www.instagram.com/randikasptrra_/?hl=id",
+    link: "https://www.instagram.com/junjun.abdii/",
     label: "Instagram Profile",
   },
 ];
@@ -167,31 +161,30 @@ const Home = () => {
         <title>Junjun Abdi Nurahman</title>
         <meta
           name="description"
-          content="Website resmi Junjun Abdi Nurahman, Front-End Web Developer. Saya berfokus pada penciptaan pengalaman digital yang menarik dan selalu berupaya memberikan solusi terbaik dalam setiap proyek yang saya kerjakan."
+          content="Website resmi Junjun Abdi Nurahman, Certified MSME Assistant. Saya berfokus pada pemberdayaan UMKM melalui bimbingan keuangan dan pengembangan bisnis."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://ekizr.com" />
+        <link rel="canonical" href="https://junjunabdinurrahman.com" />
         <meta
           property="og:title"
-          content="Junjun Abdi Nurahman — Frontend Web Developer"
+          content="Junjun Abdi Nurahman — Certified MSME Assistant"
         />
         <meta
           property="og:description"
-          content="Website resmi dan portofolio Junjun Abdi Nurahman, Front-End Web Developer."
+          content="Website resmi Junjun Abdi Nurahman, Certified MSME Assistant yang berfokus pada pemberdayaan UMKM."
         />
-        <meta property="og:url" content="https://ekizr.com" />
+        <meta property="og:url" content="https://junjunabdinurrahman.com" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "Person",
             "name": "Junjun Abdi Nurahman",
-            "jobTitle": "Frontend Developer",
-            "url": "https://ekizr.com",
+            "jobTitle": "Certified MSME Assistant",
+            "url": "https://junjunabdinurrahman.com",
             "sameAs": [
-              "https://github.com/EkiZR",
-              "https://www.linkedin.com/in/ekizr/",
-              "https://www.instagram.com/ekizr_/"
+              "https://www.linkedin.com/in/junjunabdinurrahman",
+              "https://www.instagram.com/junjun.abdii/"
             ]
           }
         `}</script>
@@ -234,8 +227,7 @@ const Home = () => {
                     data-aos="fade-up"
                     data-aos-delay="1000"
                   >
-                    "Turning Ideas into Reality with AI-Powered Development and
-                    Creative Content"
+                    "Empowering Small Businesses Through Financial Guidance and Business Development"
                   </p>
 
                   {/* Tech Stack */}

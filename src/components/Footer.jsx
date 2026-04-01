@@ -8,7 +8,7 @@ const Footer = () => {
         <span className="block text-sm pb-4 text-gray-500 text-center dark:text-gray-400">
           © {currentYear}{" "}
           <a href="#" className="hover:underline">
-            Muhammad Randika Saputra
+            Junjun Abdi Nurahman
           </a>
           . All Rights Reserved.
         </span>

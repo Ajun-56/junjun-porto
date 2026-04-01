@@ -1,14 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Linkedin,
-  Github,
   Instagram,
-  Youtube,
   ExternalLink,
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import PresenceWidget from "./PresenceWidget";
 
 const socialLinks = [
   {
@@ -16,7 +13,7 @@ const socialLinks = [
     displayName: "Let's Connect",
     subText: "on LinkedIn",
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/muhammad-randika-saputra-8299a030b?",
+    url: "https://www.linkedin.com/in/junjunabdinurrahman",
     color: "#0A66C2",
     gradient: "from-[#0A66C2] to-[#0077B5]",
     isPrimary: true,
@@ -24,34 +21,16 @@ const socialLinks = [
   {
     name: "Instagram",
     displayName: "Instagram",
-    subText: "@randikasptrra_",
+    subText: "@junjunabdi",
     icon: Instagram,
-    url: "https://www.instagram.com/randikasptrra_/?hl=id",
+    url: "https://www.instagram.com/junjun.abdii/",
     color: "#E4405F",
     gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]",
   },
   {
-    name: "YouTube",
-    displayName: "Youtube",
-    subText: "@Randika Saputra",
-    icon: Youtube,
-    url: "https://www.youtube.com/@RandikaSaputra-qw3ji",
-    color: "#FF0000",
-    gradient: "from-[#FF0000] to-[#CC0000]",
-  },
-  {
-    name: "GitHub",
-    displayName: "Github",
-    subText: "@randikasptra",
-    icon: Github,
-    url: "https://github.com/randikasptra",
-    color: "#ffffff",
-    gradient: "from-[#333] to-[#24292e]",
-  },
-  {
     name: "TikTok",
     displayName: "Tiktok",
-    subText: "@randiishere",
+    subText: "@junjunabdi",
     icon: ({ className, ...props }) => (
       <svg
         width="24px"
@@ -60,6 +39,8 @@ const socialLinks = [
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        className={className}
+        {...props}
       >
         <title>Tiktok</title>
         <g
@@ -89,29 +70,68 @@ const socialLinks = [
         </g>
       </svg>
     ),
-    url: "https://tiktok.com/@_randdddd",
+    url: "https://www.tiktok.com/@ajunnnn67",
     color: "black",
     gradient: "from-[#000000] via-[#25F4EE] to-[#FE2C55]",
   },
 ];
 
 const SocialLinks = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
   const linkedIn = socialLinks.find((link) => link.isPrimary);
   const otherLinks = socialLinks.filter((link) => !link.isPrimary);
-  const [instagram, youtube, github, tiktok] = otherLinks;
+  const [instagram, tiktok] = otherLinks;
 
   useEffect(() => {
+    // Re-initialize AOS with more reliable settings
     AOS.init({
-      offset: 10,
-     
+      duration: 800,
+      once: true,
+      offset: 0,
+      disable: false,
+      startEvent: 'DOMContentLoaded',
+      initClassName: 'aos-init',
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false,
+      throttleDelay: 99,
+      debounceDelay: 50,
     });
+
+    setIsMounted(true);
+
+    // Refresh AOS after a small delay to ensure all elements are rendered
+    setTimeout(() => {
+      AOS.refresh();
+    }, 100);
+
+    return () => {
+      AOS.refresh();
+    };
   }, []);
+
+  // If not mounted yet, show loading state
+  if (!isMounted) {
+    return (
+      <div className="w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-6 py-8 backdrop-blur-xl">
+        <div className="animate-pulse">
+          <div className="h-8 bg-white/10 rounded-lg mb-6 w-40"></div>
+          <div className="space-y-4">
+            <div className="h-20 bg-white/10 rounded-lg"></div>
+            <div className="h-20 bg-white/10 rounded-lg"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-6 py-8 backdrop-blur-xl">
       <h3
         className="text-xl font-semibold text-white mb-6 flex items-center gap-2"
-        data-aos="fade-down" 
+        data-aos="fade-down"
+        data-aos-duration="600"
       >
         <span className="inline-block w-8 h-1 bg-indigo-500 rounded-full"></span>
         Connect With Me
@@ -127,7 +147,8 @@ const SocialLinks = () => {
                      bg-white/5 border border-white/10 overflow-hidden
                      hover:border-white/20 transition-all duration-500"
           data-aos="fade-up"
-          data-aos-delay="100" 
+          data-aos-duration="600"
+          data-aos-delay="100"
         >
           {/* Hover Gradient Background */}
           <div
@@ -179,124 +200,118 @@ const SocialLinks = () => {
           </div>
         </a>
 
-        {/* Second Row - Instagram & YouTube */}
+        {/* Row for Instagram & TikTok */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[instagram, youtube].map((link, index) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 p-4 rounded-xl 
-                               bg-white/5 border border-white/10 overflow-hidden
-                               hover:border-white/20 transition-all duration-500"
-              data-aos="fade-up" 
-              data-aos-delay={200 + index * 100} 
-            >
+          {/* Instagram Link */}
+          <a
+            key={instagram.name}
+            href={instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center gap-3 p-4 rounded-xl 
+                     bg-white/5 border border-white/10 overflow-hidden
+                     hover:border-white/20 transition-all duration-500"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="200"
+          >
+            <div
+              className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
+                           bg-gradient-to-r ${instagram.gradient}`}
+            />
+
+            <div className="relative flex items-center justify-center">
               <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
-                                     bg-gradient-to-r ${link.gradient}`}
+                className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
+                             group-hover:scale-125 group-hover:opacity-30"
+                style={{ backgroundColor: instagram.color }}
               />
-
-              <div className="relative flex items-center justify-center">
-                <div
-                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
-                                       group-hover:scale-125 group-hover:opacity-30"
-                  style={{ backgroundColor: link.color }}
-                />
-                <div className="relative p-2 rounded-lg">
-                  <link.icon
-                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
-                    style={{ color: link.color }}
-                  />
-                </div>
-              </div>
-
-              {/* Text Container */}
-              <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
-                  {link.displayName}
-                </span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
-                  {link.subText}
-                </span>
-              </div>
-
-              <ExternalLink
-                className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
-                                       opacity-0 group-hover:opacity-100 transition-all duration-300
-                                       transform group-hover:translate-x-0 -translate-x-2"
-              />
-
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
-                                       translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+              <div className="relative p-2 rounded-lg">
+                <instagram.icon
+                  className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
+                  style={{ color: instagram.color }}
                 />
               </div>
-            </a>
-          ))}
-        </div>
+            </div>
 
-        {/* Third Row - GitHub & TikTok */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[github, tiktok].map((link, index) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 p-4 rounded-xl 
-                               bg-white/5 border border-white/10 overflow-hidden
-                               hover:border-white/20 transition-all duration-500"
-              data-aos="fade-up" 
-              data-aos-delay={400 + index * 100}
-            >
+            <div className="flex flex-col min-w-0">
+              <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                {instagram.displayName}
+              </span>
+              <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
+                {instagram.subText}
+              </span>
+            </div>
+
+            <ExternalLink
+              className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
+                           opacity-0 group-hover:opacity-100 transition-all duration-300
+                           transform group-hover:translate-x-0 -translate-x-2"
+            />
+
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
               <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
-                                     bg-gradient-to-r ${link.gradient}`}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
+                             translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
               />
+            </div>
+          </a>
 
-              <div className="relative flex items-center justify-center">
-                <div
-                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
-                                       group-hover:scale-125 group-hover:opacity-30"
-                  style={{ backgroundColor: link.color }}
-                />
-                <div className="relative p-2 rounded-lg">
-                  <link.icon
-                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
-                    style={{ color: link.color }}
-                  />
-                </div>
-              </div>
+          {/* TikTok Link */}
+          <a
+            key={tiktok.name}
+            href={tiktok.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center gap-3 p-4 rounded-xl 
+                     bg-white/5 border border-white/10 overflow-hidden
+                     hover:border-white/20 transition-all duration-500"
+            data-aos="fade-up"
+            data-aos-duration="600"
+            data-aos-delay="300"
+          >
+            <div
+              className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
+                           bg-gradient-to-r ${tiktok.gradient}`}
+            />
 
-              {/* Text Container */}
-              <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
-                  {link.displayName}
-                </span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
-                  {link.subText}
-                </span>
-              </div>
-
-              <ExternalLink
-                className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
-                                       opacity-0 group-hover:opacity-100 transition-all duration-300
-                                       transform group-hover:translate-x-0 -translate-x-2"
+            <div className="relative flex items-center justify-center">
+              <div
+                className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
+                             group-hover:scale-125 group-hover:opacity-30"
+                style={{ backgroundColor: tiktok.color }}
               />
-
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
-                                       translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+              <div className="relative p-2 rounded-lg">
+                <tiktok.icon
+                  className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
+                  style={{ color: tiktok.color }}
                 />
               </div>
-            </a>
-          ))}
+            </div>
+
+            <div className="flex flex-col min-w-0">
+              <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                {tiktok.displayName}
+              </span>
+              <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
+                {tiktok.subText}
+              </span>
+            </div>
+
+            <ExternalLink
+              className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
+                           opacity-0 group-hover:opacity-100 transition-all duration-300
+                           transform group-hover:translate-x-0 -translate-x-2"
+            />
+
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none overflow-hidden">
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
+                             translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+              />
+            </div>
+          </a>
         </div>
-  
       </div>
     </div>
   );

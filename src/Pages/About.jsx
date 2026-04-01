@@ -35,7 +35,7 @@ const Header = memo(() => (
       data-aos-duration="800"
     >
       <Sparkles className="w-5 h-5 text-purple-400" />
-      Informatics Engineering Student | Content Creator | Fullstack Developer
+      Islamic Economics Graduate | MSME Empowerment | Financial & Business Development
       <Sparkles className="w-5 h-5 text-purple-400" />
     </p>
   </div>
@@ -138,7 +138,7 @@ const AboutPage = () => {
       today.getFullYear() -
       startDate.getFullYear() -
       (today <
-      new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate())
+        new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate())
         ? 1
         : 0)
     );
@@ -235,7 +235,7 @@ const AboutPage = () => {
                 data-aos-duration="1300"
                 itemProp="name"
               >
-                Junjun Abdinurahman
+                Junjun Abdi Nurahman
               </span>
             </h2>
 
@@ -274,7 +274,7 @@ const AboutPage = () => {
               </div>
 
               <blockquote className="text-gray-300 text-center lg:text-left italic font-medium text-sm relative z-10 pl-6">
-                "Leveraging AI as a professional tool, not a replacement."
+                "Bridging financial literacy, business strategy, and digital innovation to support sustainable MSME growth."
               </blockquote>
             </div>
 
