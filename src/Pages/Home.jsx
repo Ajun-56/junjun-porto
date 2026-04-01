@@ -158,7 +158,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Junjun Abdi Nurahman</title>
+        <title>Junjun Abdi Nurrahman</title>
         <meta
           name="description"
           content="Website resmi Junjun Abdi Nurahman, Certified MSME Assistant. Saya berfokus pada pemberdayaan UMKM melalui bimbingan keuangan dan pengembangan bisnis."
@@ -167,11 +167,11 @@ const Home = () => {
         <link rel="canonical" href="https://junjunabdinurrahman.com" />
         <meta
           property="og:title"
-          content="Junjun Abdi Nurahman — Certified MSME Assistant"
+          content="Junjun Abdi Nurrahman — Certified MSME Assistant"
         />
         <meta
           property="og:description"
-          content="Website resmi Junjun Abdi Nurahman, Certified MSME Assistant yang berfokus pada pemberdayaan UMKM."
+          content="Website resmi Junjun Abdi Nurrahman, Certified MSME Assistant yang berfokus pada pemberdayaan UMKM."
         />
         <meta property="og:url" content="https://junjunabdinurrahman.com" />
         <meta property="og:type" content="website" />

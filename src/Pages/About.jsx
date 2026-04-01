@@ -235,7 +235,7 @@ const AboutPage = () => {
                 data-aos-duration="1300"
                 itemProp="name"
               >
-                Junjun Abdi Nurahman
+                Junjun Abdi Nurrahman
               </span>
             </h2>
 

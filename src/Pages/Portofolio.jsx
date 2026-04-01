@@ -222,7 +222,7 @@ export default function FullWidthTabs() {
           </span>
         </h2>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
-          Supporting micro, small, and medium enterprises (MSMEs) through business mentoring, basic financial management assistance, marketing strategy development, and digital adoption to enhance sustainability and competitiveness -judul kecil
+          Supporting micro, small, and medium enterprises (MSMEs) through business mentoring, basic financial management assistance, marketing strategy development, and digital adoption to enhance sustainability and competitiveness
         </p>
       </div>
 
